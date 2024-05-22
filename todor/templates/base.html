@@ -22,12 +22,26 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
+                    {% if g.user %}
+                    <li class="nav-item">
+                        <span class="nav-link activate">{{ g.user.username }}</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('todo.lista') }}">Tareas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('auth.logout') }}">Cerrar Sesion</a>
+                    </li>
+                    {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('auth.register') }}">Registrarce</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('auth.login') }}">Inicio de Sesion</a>
                     </li>
+                    {% endif %}
+
+
                 </ul>
             </div>
         </div>
@@ -37,6 +51,18 @@
         {% block content %}
 
         {% endblock %}
+        {% for message in get_flashed_messages() %}
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-md-3 text-center mx-auto">
+                    <div class="alert alert-danger" role="alert">
+                        {{ message }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
     </div>
 
     <div id="footer">
