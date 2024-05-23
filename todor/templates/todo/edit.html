@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %} Editar Tarea {% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="text-center">Editar Tarea</h1>
+                </div>
+                <div class="card-body">
+                    <form action="" method="post">
+                        <div class="form-group">
+                            <label for="title">Titulo</label>
+                            <input type="text" class="form-control" id="title" name="title" required
+                                value="{{ todo.title }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="desc">Descripcion</label>
+                            <textarea class="form-control" id="desc" name="desc" rows="10"
+                                cols="50">{{ todo.title }}</textarea>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="title">Completado</label>
+                            <input type="checkbox" class="form-check-input" id="state" name="state" {% if
+                                todo.state==true %} checked {% endif %}>
+                        </div>
+                        <br>
+                        <div class="text-center">
+                            <input type="submit" class="btn btn-primary" value="Editar">
+                            <a href="{{ url_for('todo.lista') }}" class="btn btn-danger">Cancelar</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
