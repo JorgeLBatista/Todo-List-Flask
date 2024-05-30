@@ -1,9 +1,11 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 
+# base de datos
 db = SQLAlchemy()
 
 
+# funcion de la creacionde la app
 def create_app():
 
     app = Flask(__name__)
