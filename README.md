@@ -1,1 +1,1 @@
-por favor quiero ser millonario
+este es de cero
